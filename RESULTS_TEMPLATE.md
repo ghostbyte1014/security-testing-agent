@@ -1,4 +1,4 @@
----
+﻿---
 Document: Test Results Template
 Owner: ghostbyte
 GitHub: https://github.com/ghostbyte1014
@@ -13,10 +13,10 @@ GitHub: https://github.com/ghostbyte1014
 
 ## Results
 
-| Folder / File | Checklist item | Severity | Result | Evidence / notes |
-|---|---|---|---|---|
-| 01_API_Security/06_cors_policy.md | Avoid wildcard '*' with credentials enabled | High | ☐ Pass ☐ Fail | |
-| | | | | |
+| Folder / File | Checklist item | Severity | Result | Evidence (file:line / proof) | Owner | Remediation Due | Notes |
+|---|---|---|---|---|---|---|---|
+| 01_API_Security/06_cors_policy.md | Avoid wildcard '*' with credentials enabled | High | ☐ Pass ☐ Fail ☐ N/A | | | | |
+| | | | | | | | |
 
 (Copy rows as needed — one row per checklist item tested. Carry the
 **Severity** value straight from `MASTER_CHECKLIST.md` so failed items are

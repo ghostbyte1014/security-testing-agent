@@ -1,8 +1,8 @@
----
+﻿---
 Document: Agentic Automation Guide
 Owner: ghostbyte
 GitHub: https://github.com/ghostbyte1014
-Last Updated: 2026-08-29
+Last Updated: 2026-08-29 13:04 PHT (UTC+8)
 ---
 
 # Agentic Automation Guide — Running This Checklist With an AI Coding Agent
@@ -43,25 +43,34 @@ Start with Phases 1–7 for pure code-review automation. For the "needs a
 live system" phases, either grant the agent read-only CLI/API credentials
 for that system, or run those phases manually using the same checklist.
 
-## 3. Run a phase manually with a one-off prompt
+## 3. Fast Start: Use the 1-Click Helper Script
 
-Open your agentic coding tool in the project and give it a prompt like this
-(swap in the phase folder and target date):
+Instead of manually creating dated files and typing prompts, run the included helper:
+
+```powershell
+# Windows (PowerShell)
+.\scripts\new-audit.ps1 04
+
+# Linux / macOS (Bash)
+./scripts/new-audit.sh 04
+```
+
+This instantly creates `phases/04_api_layer/RESULTS_YYYY-MM-DD.md` and generates the exact agent prompt for you.
+
+## 4. Run a phase manually with a one-off prompt
+
+If you prefer running without the script, open your agentic coding tool and give it a prompt like this:
 
 ```
-Read docs/security-checklist/phases/04_api_layer/CHECKLIST.md.
+Read phases/04_api_layer/CHECKLIST.md.
 Go through every item against this codebase — search for the relevant
 code, decide Pass/Fail/N/A with a one-line reason citing the file/line
 you checked, and write the results into
-docs/security-checklist/phases/04_api_layer/RESULTS_TEMPLATE.md
-(save as RESULTS_2026-08-29.md so it doesn't overwrite the blank template).
+phases/04_api_layer/RESULTS_YYYY-MM-DD.md.
 Flag anything you're not confident about rather than guessing.
 ```
 
-Repeat this per phase folder as you touch that part of the codebase — you
-don't need to run all 12 every time.
-
-## 4. Make it repeatable — a custom slash command
+## 5. Make it repeatable — a custom slash command
 
 Most agentic coding tools support project-level custom commands stored in
 the repo itself, so you don't have to re-type the prompt every time.
@@ -85,7 +94,7 @@ Then from your editor, running a phase becomes a single command, e.g.:
 /security-check 04_api_layer
 ```
 
-## 5. Build it into your natural workflow
+## 6. Build it into your natural workflow
 
 Since there's no CI/CD trigger doing this automatically, tie each phase to
 a moment you're already at in your workflow instead of a schedule:
@@ -102,7 +111,7 @@ a moment you're already at in your workflow instead of a schedule:
 This turns the checklist into something you run a few focused times per
 week rather than one large audit you keep postponing.
 
-## 6. For more accurate execution — a few practical tips
+## 7. For more accurate execution — a few practical tips
 
 - **Give the agent real evidence to cite, not vibes.** Ask it to quote the
   specific file/line or grep match backing each Pass/Fail, not just a

@@ -2,7 +2,7 @@
 Document: Update Cadence & Version Control
 Owner: ghostbyte
 GitHub: https://github.com/ghostbyte1014
-Last Updated: 2026-08-29
+Last Updated: 2026-08-29 13:04 PHT (UTC+8)
 ---
 
 # Update Cadence & Version Control
@@ -55,5 +55,6 @@ triggered early by an incident, a new CVE, or a major framework/OS release.
 | 1.0 | 2026-08-29 | ghostbyte | Initial consolidated restructure: merged 151 individual files across 19 domain folders into one `MASTER_CHECKLIST.md`; added severity ratings, concrete example test steps, last-reviewed dates, cross-links between related items, and authorization reminders on the three risk-sensitive folders (Web Vulnerabilities, Cloud Infra & Deployment, DNS/Email/Domain Security). Added this update-cadence file and a standardized results template. |
 | 1.1 | 2026-08-29 | ghostbyte | Added `templates/` folder with 12 phase-scoped checklists (Design & Architecture → Local Dev → Database & Backend → API Layer → Frontend/UI → Application Security Testing → CI/CD & Release Engineering → Cloud Infrastructure → Edge/CDN/DNS → Release Rollout → Post-Release Monitoring & IR → Ongoing Operations), each pulling the relevant items straight out of `MASTER_CHECKLIST.md` with severity + example test intact. All 127 checklist items confirmed to appear in exactly one phase template. |
 | 1.2 | 2026-08-29 | ghostbyte | Restructured `templates/` into `phases/` — each of the 12 phases is now a self-contained folder with its own `README.md` (when/why), `CHECKLIST.md` (what to check, reference only), and `RESULTS_TEMPLATE.md` (fillable, with sign-off block), so any single phase can be handed off independently. Coverage re-verified: all 127 items still appear in exactly one phase folder. |
+| 1.3 | 2026-08-29 13:04 PHT | ghostbyte | Added `scripts/new-audit.ps1` & `scripts/new-audit.sh` 1-click CLI starters, added GitHub Actions PR security audit workflow, upgraded all 13 results templates with explicit Evidence citation, Owner, and Remediation Due tracking, and updated timestamp across all files to Philippine Time (PHT, UTC+8). |
 
 *(Add a new row each time a review pass changes content — see "How to run an update" above.)*

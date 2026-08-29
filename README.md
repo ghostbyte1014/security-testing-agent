@@ -1,8 +1,8 @@
----
+﻿---
 Document: Security Testing Agent — Consolidated Reference
 Owner: ghostbyte
 GitHub: https://github.com/ghostbyte1014
-Last Updated: 2026-08-29
+Last Updated: 2026-08-29 13:04 PHT (UTC+8)
 Version: 1.0
 ---
 
@@ -21,10 +21,31 @@ or keep under version control:
 |---|---|
 | **`MASTER_CHECKLIST.md`** | The full checklist — all 19 domains, one file. Each item has what it is, why it matters, the test checklist, a severity rating, a concrete example test step, a last-reviewed date, and cross-links to related items. |
 | **`phases/`** | 12 self-contained phase folders ordered to match a development lifecycle (design → code → deploy → ongoing ops). Each folder has its own `README.md` (when/why), `CHECKLIST.md` (what to check), and `RESULTS_TEMPLATE.md` (where to record a pass) — see `phases/README.md` for the full list. |
+| **`scripts/`** | Helper CLI scripts (`new-audit.ps1` & `new-audit.sh`) to automatically generate today's dated audit results file and print the prompt for your AI agent. |
 | **`UPDATE_CADENCE.md`** | How often each part of the checklist should be reviewed, what triggers an early update, and the version/change log. |
 | **`RESULTS_TEMPLATE.md`** | Standardized format for recording pass/fail findings from a full, all-domain pass — separate from the per-phase templates in `phases/`. |
 
-## How to use it
+## Quick Start: 1-Click Audit Helper
+
+Instead of manually copying templates and dates, run the helper script:
+
+**Windows (PowerShell):**
+```powershell
+.\scripts\new-audit.ps1 04_api_layer
+# Or for a full pass:
+.\scripts\new-audit.ps1 all
+```
+
+**Linux / macOS (Bash):**
+```bash
+./scripts/new-audit.sh 04_api_layer
+# Or for a full pass:
+./scripts/new-audit.sh all
+```
+
+The script automatically generates `RESULTS_YYYY-MM-DD.md` in that phase folder and outputs the exact prompt ready to hand to your AI coding assistant.
+
+## How to use it manually
 
 **Option A — by phase (recommended for day-to-day use):**
 1. Open `phases/README.md`, find the phase matching where you are right

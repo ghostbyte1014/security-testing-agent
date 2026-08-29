@@ -1,0 +1,46 @@
+name: Security Audit PR Check
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  secret-scan:
+    name: Phase 2 — Secret Scanning (No committed secrets)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks Secret Scanner
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  dependency-review:
+    name: Phase 2 & 6 — Dependency Vulnerability Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Dependency Review Action
+        uses: actions/dependency-review-action@v4
+        if: github.event_name == 'pull_request'
+
+  audit-reminder:
+    name: PR Security Checklist Reminder
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checklist Guidance
+        run: |
+          echo "================================================================="
+          echo "🛡️ Security Testing Agent Check"
+          echo "Remember to run the appropriate phase checklist before merging:"
+          echo "  - Backend / API changes: ./scripts/new-audit.sh 04_api_layer"
+          echo "  - Frontend changes:      ./scripts/new-audit.sh 05_frontend_ui"
+          echo "  - Release prep:          ./scripts/new-audit.sh 07_cicd_release_engineering"
+          echo "================================================================="

@@ -1,8 +1,8 @@
----
+﻿---
 Document: What to Check — Application Security Testing (QA / Staging)
 Owner: ghostbyte
 GitHub: https://github.com/ghostbyte1014
-Last Updated: 2026-08-29
+Last Updated: 2026-08-29 13:04 PHT (UTC+8)
 Phase: 6 of 12
 ---
 
