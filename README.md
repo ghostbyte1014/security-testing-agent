@@ -1,4 +1,4 @@
-﻿---
+---
 Document: Security Testing Agent — Consolidated Reference
 Owner: ghostbyte
 GitHub: https://github.com/ghostbyte1014
@@ -65,6 +65,25 @@ The script automatically generates `RESULTS_YYYY-MM-DD.md` in that phase folder 
    to test" (this checklist) separate from "what we found" (your results file).
 4. Check `UPDATE_CADENCE.md` before relying on an older copy of this
    folder — confirm you're not past due for a refresh on the section you're using.
+
+## Learning mode (recommended if you're newer to secure coding)
+
+If a lot of this codebase came from an AI coding assistant ("vibe coded"),
+treat this checklist as a way to *learn* secure development, not just a
+box-ticking gate. For every item — pass or fail — ask your coding agent to:
+
+1. **Explain why it matters, in plain terms** — not just the OWASP/NIST
+   reference, but what actually goes wrong if this item is skipped.
+2. **Show the actual line(s) of code it's evaluating** — don't accept a bare
+   "Pass"/"Fail"; make it point at the specific function, endpoint, or config
+   that the verdict is based on.
+3. **Explain the fix, not just apply it** — if it's a Fail, ask it to walk
+   through *why* the fix works before it changes the code, so the pattern
+   sticks for next time you build something similar.
+
+Doing this turns a pass through the checklist into a running, code-grounded
+crash course in secure development — which matters more early on than a
+clean-looking results file.
 
 ## Scope & safety
 

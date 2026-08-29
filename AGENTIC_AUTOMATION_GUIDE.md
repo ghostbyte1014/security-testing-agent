@@ -1,4 +1,4 @@
-﻿---
+---
 Document: Agentic Automation Guide
 Owner: ghostbyte
 GitHub: https://github.com/ghostbyte1014
@@ -70,6 +70,21 @@ phases/04_api_layer/RESULTS_YYYY-MM-DD.md.
 Flag anything you're not confident about rather than guessing.
 ```
 
+**If you're newer to secure coding (learning-mode variant):** add these
+lines to the prompt so the agent teaches instead of just grading:
+
+For every item, whether Pass or Fail:
+
+Explain in plain terms why this check matters and what actually goes
+wrong in production if it's skipped.
+Quote the exact file/line(s) you evaluated to reach that verdict — no
+bare Pass/Fail.
+If it's a Fail, explain why the fix works before applying it.
+
+This costs a bit more time per pass, but turns the checklist run into a
+code-grounded lesson instead of a rubber stamp — worth it especially on a
+mostly AI-generated codebase you didn't write line-by-line yourself.
+
 ## 5. Make it repeatable — a custom slash command
 
 Most agentic coding tools support project-level custom commands stored in
@@ -82,10 +97,14 @@ Run the security checklist for phase: $ARGUMENTS
 
 1. Read docs/security-checklist/phases/$ARGUMENTS/CHECKLIST.md
 2. For each item, search the actual codebase for evidence
-3. Write Pass/Fail/N/A + a one-line reason per item, citing the file/line checked
-4. Save results to docs/security-checklist/phases/$ARGUMENTS/RESULTS_$(date +%Y-%m-%d).md
-5. Summarize Critical/High failures at the end of the run
-6. Flag anything uncertain rather than guessing a Pass
+3. For every item, explain in plain terms why it matters and what breaks
+   in production if it's skipped
+4. Write Pass/Fail/N/A + a one-line reason per item, citing the exact
+   file/line checked — no bare verdicts
+5. For any Fail, explain why the proposed fix works before applying it
+6. Save results to docs/security-checklist/phases/$ARGUMENTS/RESULTS_$(date +%Y-%m-%d).md
+7. Summarize Critical/High failures at the end of the run
+8. Flag anything uncertain rather than guessing a Pass
 ```
 
 Then from your editor, running a phase becomes a single command, e.g.:
